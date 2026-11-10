@@ -8,11 +8,11 @@
   cursor:pointer;
 }
 
-.hide {
+#hideSidebarButton.hide {
   background:url("../images/buttons.png") -7px 0;
 }
 
-.show {
+#hideSidebarButton.show {
   background:url("../images/buttons.png") 0 0;
 }
 
@@ -29,4 +29,11 @@
 #content {
   position: relative;
   padding: 6px 6px 6px 6px;
+}
+
+/* レスポンシブ表示ではサイドバーはフライアウトメニューに入るためボタンは不要 */
+@media screen and (max-width: 899px) {
+  #sidebarHandler {
+    display: none;
+  }
 }
