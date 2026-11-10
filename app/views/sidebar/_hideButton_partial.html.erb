@@ -1,13 +1,10 @@
-<%= stylesheet_link_tag 'sidebar_hide.css', :plugin => 'sidebar_hide' %>
-<%= javascript_include_tag 'sidebar_hide.js', :plugin => 'sidebar_hide' %>
-
 <% if sidebar_content? %>
-    <div id="sidebarHandler">
-        <div class ="show" id = "hideSidebarButton" onclick="hideSideBar()" width="7" height="23"></div>
-    </div>
-    <% if cookies["sidebarCookie"] == "hide" %>
-        <script>
-            hideSideBar();
-        </script>
-    <% end %>
+  <% hidden = cookies['sidebarCookie'] == 'hide' %>
+  <div id="sidebarHandler">
+    <div id="hideSidebarButton" class="<%= hidden ? 'hide' : 'show' %>" role="button" tabindex="0"
+         onclick="hideSideBar()" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); hideSideBar(); }"></div>
+  </div>
+  <% if hidden %>
+    <%= javascript_tag 'sidebarHideApply(true);' %>
+  <% end %>
 <% end %>
